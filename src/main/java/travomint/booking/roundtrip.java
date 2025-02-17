@@ -1,5 +1,6 @@
 package travomint.booking;
 
+import java.lang.annotation.ElementType;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -86,6 +87,61 @@ public class roundtrip {
 		WebElement dateElement = driver.findElement(By.xpath(dateXpath));
 		dateElement.click();
 
+		LocalDate todayDate = LocalDate.now(); // Get the current date
+		LocalDate selectedDate2 = todayDate.plus(15, ChronoUnit.DAYS); // Add 7 days
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String formattedDate2 = selectedDate2.format(formatter);
+		// Print the selected date for verification
+		System.out.println("Selected date after 15 days: " + formattedDate2);
+		// Open the calendar and select the correct date
+		WebElement calendar2 = driver.findElement(By.id("return"));
+		calendar.click();
+		Thread.sleep(2000);
+		// Example of how you might use the calculated date to click on the calendar
+		// element
+		// Assuming the date picker has dates in this format (you may need to adjust the
+		// XPath if different):
+		String dateXpath2 = String.format("//td[contains(text(), '%s')]", selectedDate.getDayOfMonth());
+		WebElement dateElement2 = driver.findElement(By.xpath(dateXpath));
+		dateElement2.click();
+
+		driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[3]/div/section[1]/div/div/div/div/div[2]/div[2]/div/div[2]/div[4]/div/div[1]/div/div[1]/div"))
+				.click();
+		System.out.println("In Traveler(s) & Class clicked successfully");
+
+		for (int i = 0; i < 2; i++)
+			driver.findElement(By.xpath(
+					"/html/body/div[1]/div/div[3]/div/section[1]/div/div/div/div/div[2]/div[2]/div/div[2]/div[4]/div/div[1]/div[2]/div/div[1]/div[2]/div[2]"))
+					.click();
+		System.out.println("In Adult select successfully");
+
+		for (int i = 0; i < 3; i++)
+			driver.findElement(By.xpath(
+					"/html/body/div[1]/div/div[3]/div/section[1]/div/div/div/div/div[2]/div[2]/div/div[2]/div[4]/div/div[1]/div[2]/div/div[2]/div[2]/div[2]"))
+					.click();
+
+		for (int i = 0; i < 3; i++)
+			driver.findElement(By.xpath(
+					"/html/body/div[1]/div/div[3]/div/section[1]/div/div/div/div/div[2]/div[2]/div/div[2]/div[4]/div/div[1]/div[2]/div/div[3]/div[2]/div[2]"))
+					.click();
+
+		driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[3]/div/section[1]/div/div/div/div/div[2]/div[2]/div/div[2]/div[4]/div/div[1]/div[2]/div/div[6]/button"))
+				.click();
+		System.out.println("Done button clicked successfully");
+
+		driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[3]/div/section[1]/div/div/div/div/div[2]/div[2]/div/div[2]/div[4]/div/div[2]/button"))
+				.click();
+		System.out.println("Search button clicked successfully");
+		Thread.sleep(30000);
+		
+		driver.findElement(By.xpath("/html/body/div[5]/div/div/div/button[2]")).click();
+		System.out.println("Pop-up close button clicked successfully");
+		
+		
+		
 	}
 
 }
