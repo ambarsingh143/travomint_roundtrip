@@ -135,10 +135,12 @@ public class roundtrip {
 				"/html/body/div[1]/div/div[3]/div/section[1]/div/div/div/div/div[2]/div[2]/div/div[2]/div[4]/div/div[2]/button"))
 				.click();
 		System.out.println("Search button clicked successfully");
-		Thread.sleep(30000);
+		Thread.sleep(40000);
 		
 		driver.findElement(By.xpath("/html/body/div[5]/div/div/div/button[2]")).click();
 		System.out.println("Pop-up close button clicked successfully");
+		
+		
 		
 		
 		
