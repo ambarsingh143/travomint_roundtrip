@@ -1,9 +1,11 @@
 package travomint.booking;
 
 import java.lang.annotation.ElementType;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.NoSuchElementException;
 
 import javax.swing.text.DateFormatter;
 
@@ -11,6 +13,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -135,11 +141,22 @@ public class roundtrip {
 				"/html/body/div[1]/div/div[3]/div/section[1]/div/div/div/div/div[2]/div[2]/div/div[2]/div[4]/div/div[2]/button"))
 				.click();
 		System.out.println("Search button clicked successfully");
-		Thread.sleep(40000);
+		Thread.sleep(30000);
 		
-		driver.findElement(By.xpath("/html/body/div[5]/div/div/div/button[2]")).click();
-		System.out.println("Pop-up close button clicked successfully");
-		
+//		driver.findElement(By.xpath("/html/body/div[5]/div/div/div/button[2]")).click();
+//		System.out.println("Pop-up close button clicked successfully");
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+	WebElement closeButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[5]/div/div/div/button[2]")));
+//		WebElement closeButton = Wait.until((By.xpath("/html/body/div[5]/div/div/div/button[2]"));
+        if (closeButton.isDisplayed()) {
+            closeButton.click();
+            System.out.println("Popup closed successfully!");
+        }
+        else {
+        	System.out.println("Popup did not appear within the wait time.");
+        }
+        
+   
 		
 		
 		
