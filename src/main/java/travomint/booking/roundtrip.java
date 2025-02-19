@@ -143,11 +143,8 @@ public class roundtrip {
 		System.out.println("Search button clicked successfully");
 		Thread.sleep(30000);
 		
-//		driver.findElement(By.xpath("/html/body/div[5]/div/div/div/button[2]")).click();
-//		System.out.println("Pop-up close button clicked successfully");
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
 	WebElement closeButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[5]/div/div/div/button[2]")));
-//		WebElement closeButton = Wait.until((By.xpath("/html/body/div[5]/div/div/div/button[2]"));
         if (closeButton.isDisplayed()) {
             closeButton.click();
             System.out.println("Popup closed successfully!");
@@ -157,8 +154,6 @@ public class roundtrip {
         }
         
    
-		
-		
 		
 		
 	}
